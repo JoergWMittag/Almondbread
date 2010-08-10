@@ -2,9 +2,7 @@ package almondbread;
 
 final class Complex {
     final static Complex ZERO = new Complex();
-    final double real;
-    final double imag;
-    final double abs;
+    final double real, imag, abs;
 
     Complex(final double real, final double imag) {
         this.real = real;

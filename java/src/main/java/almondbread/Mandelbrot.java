@@ -1,8 +1,7 @@
 package almondbread;
 
 final class Mandelbrot {
-    private static final int width = 80;
-    private static final int height = 20;
+    private static final int width = 80, height = 20;
 
     public static final void main(String... args) {
         eachPoint(width, height, new Action3IntIntShort() {
@@ -48,8 +47,7 @@ final class Mandelbrot {
     }
 
     static final void eachPoint(final int width, final int height, final Action3IntIntShort func) {
-        double r = -2.0;
-        double i = -1.0;
+        double r = -2.0, i = -1.0;
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 func.apply(x, y, escapeTime2(new Complex(r, i)));
