@@ -7,7 +7,7 @@ object Mandelbrot {
   private val height = 20
 
   def main(args: Array[String]) {
-    eachPoint(width, height, (x, y, v) => {
+    eachPoint(width, height, (x, _, v) => {
         if (x == 0) println
         print(if (v < 255) "-" else "#")
       })
