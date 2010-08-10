@@ -1,11 +1,13 @@
 require 'mandelbrot'
 require 'java'
 
+include_class javax.swing.JPanel
 include_class javax.swing.JFrame
 include_class java.awt.image.BufferedImage
+include_class java.awt.Dimension
 
 module Almondbread
-  class ImagePanel < javax.swing.JPanel
+  class ImagePanel < JPanel
     def initialize(image)
       super()
       @image = image
@@ -16,7 +18,7 @@ module Almondbread
     end
 
     def getPreferredSize
-      java.awt.Dimension.new(@image.width, @image.height)
+      Dimension.new(@image.width, @image.height)
     end
   end
 

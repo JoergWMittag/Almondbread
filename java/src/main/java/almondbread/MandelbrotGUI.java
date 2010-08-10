@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import java.awt.image.BufferedImage;
+import java.awt.Dimension;
 
 final class MandelbrotGUI extends JPanel {
     private static final int width = 640, height = 480;
@@ -32,6 +33,6 @@ final class MandelbrotGUI extends JPanel {
 
     @Override
     public final Dimension getPreferredSize() {
-        return new java.awt.Dimension(image.getWidth(), image.getHeight());
+        return new Dimension(image.getWidth(), image.getHeight());
     }
 }

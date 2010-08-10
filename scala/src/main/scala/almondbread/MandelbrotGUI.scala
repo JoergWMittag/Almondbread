@@ -1,17 +1,18 @@
 package almondbread
 
 import scala.swing._
+import java.awt.image.BufferedImage
 
-object MandelbrotGUI extends scala.swing.SimpleSwingApplication {
+object MandelbrotGUI extends SimpleSwingApplication {
   private val width = 640
   private val height = 480
 
-  private val image = new java.awt.image.BufferedImage(width, height, java.awt.image.BufferedImage.TYPE_BYTE_BINARY)
+  private val image = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_BINARY)
 
-  def top = new scala.swing.MainFrame {
+  def top = new MainFrame {
     title = "Mandelbrot"
     contents = new Panel {
-      override def paint(g: scala.swing.Graphics2D) = {
+      override def paint(g: Graphics2D) = {
         super.paint(g)
         g.drawImage(image, 0, 0, null)
       }
