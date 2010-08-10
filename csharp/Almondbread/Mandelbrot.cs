@@ -19,45 +19,20 @@ namespace Almondbread
                 }
                 Console.Write(v < 255 ? "-" : "#");
             });
-            Console.WriteLine();
-            PrintMandelSet();
         }
 
         private static short EscapeTime(Complex c)
         {
-            short step = 0;
-            var z = Complex.Zero;
-            while (step++ < 256 && Complex.Abs(z) < 4)
-            {
-                z = z * z + c;
-            }
-            return step;
+            return EscapeTimeRecursive(c, Complex.Zero);
         }
 
-        private static short EscapeTime2(Complex c)
-        {
-            return EscapeTime2Recursive(c, Complex.Zero);
-        }
-
-        private static short EscapeTime2Recursive(Complex c, Complex z, short step = 0)
+        private static short EscapeTimeRecursive(Complex c, Complex z, short step = 0)
         {
             if (step > 256 || Complex.Abs(z) > 4)
             {
                 return step;
             }
-            return EscapeTime2Recursive(c, z * z + c, (short)(step + 1));
-        }
-
-        private static void PrintMandelSet(int width = width, int height = height)
-        {
-            for (double i = -1.0; i < 1.0; i += 2.0 / height)
-            {
-                for (double r = -2.0; r < 0.5; r += 2.5 / width)
-                {
-                    Console.Write(EscapeTime2(new Complex(r, i)) < 255 ? "*" : " ");
-                }
-                Console.WriteLine();
-            }
+            return EscapeTimeRecursive(c, z * z + c, (short)(step + 1));
         }
 
         internal static void EachPoint(int width, int height, Action<int, int, short> func)
@@ -68,7 +43,7 @@ namespace Almondbread
                               from x in Enumerable.Range(0, width)
                               select new { ir = -1.0 + i * y, ii = y, rr = -2.0 + r * x, ri = x })
             {
-                func(t.ri, t.ii, EscapeTime2(new Complex(t.rr, t.ir)));
+                func(t.ri, t.ii, EscapeTime(new Complex(t.rr, t.ir)));
             }
         }
     }
