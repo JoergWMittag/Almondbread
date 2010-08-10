@@ -7,10 +7,10 @@ object Mandelbrot {
   private val height = 20
 
   def main(args: Array[String]) {
-    eachPoint(width, height, (x, _, v) => {
+    eachPoint(width, height) { (x, _, v) => {
         if (x == 0) println
         print(if (v < 255) "-" else "#")
-      })
+      }}
   }
 
   @tailrec
@@ -18,7 +18,7 @@ object Mandelbrot {
     if (step > 256 || z.abs > 4) step
     else escapeTime(c, z*z + c, step + 1)
 
-  def eachPoint(width: Int = width, height: Int = height, func: (Int, Int, Int) => Unit) {
+  def eachPoint(width: Int = width, height: Int = height)(func: (Int, Int, Int) => Unit) {
     val rs = 3.0 / width
     val is = 2.0 / height
     for (y <- 0 until height; x <- 0 until width)
