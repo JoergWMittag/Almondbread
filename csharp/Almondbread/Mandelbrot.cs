@@ -21,18 +21,18 @@ namespace Almondbread
             });
         }
 
-        private static short EscapeTime(Complex c)
+        private static short EscapeTime(Complex cc)
         {
-            return EscapeTimeRecursive(c, Complex.Zero);
-        }
-
-        private static short EscapeTimeRecursive(Complex c, Complex z, short step = 0)
-        {
-            if (step > 256 || Complex.Abs(z) > 4)
+            Func<Complex, Complex, short, short> escapeTime = null;
+            escapeTime = (c, z, step) =>
             {
-                return step;
-            }
-            return EscapeTimeRecursive(c, z * z + c, (short)(step + 1));
+                if (step > 256 || Complex.Abs(z) > 4)
+                {
+                    return step;
+                }
+                return escapeTime(c, z * z + c, (short)(step + 1));
+            };
+            return escapeTime(cc, Complex.Zero, 0);
         }
 
         internal static void EachPoint(int width, int height, Action<int, int, short> func)
