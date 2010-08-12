@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import java.awt.image.BufferedImage;
-import java.awt.Dimension;
 
 final class MandelbrotGUI extends JPanel {
     private static final int width = 640, height = 480;
