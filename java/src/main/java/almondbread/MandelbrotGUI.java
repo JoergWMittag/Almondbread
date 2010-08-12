@@ -10,7 +10,7 @@ final class MandelbrotGUI extends JPanel {
     private static final int width = 640, height = 480;
     private static final BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_BINARY);
 
-    public static final void main(String... args) {
+    public static final void main(final String... args) {
         final JFrame frame = new JFrame("Mandelbrot");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(new MandelbrotGUI());

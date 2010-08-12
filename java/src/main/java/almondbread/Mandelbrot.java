@@ -3,7 +3,7 @@ package almondbread;
 final class Mandelbrot {
     private static final int width = 80, height = 20;
 
-    public static final void main(String... args) {
+    public static final void main(final String... args) {
         eachPoint(width, height, new Action3IntIntShort() {
                 public void apply(final int x, final int y, final short v) {
                     if (x == 0) {
