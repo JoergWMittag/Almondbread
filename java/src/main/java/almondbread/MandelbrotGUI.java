@@ -19,7 +19,7 @@ final class MandelbrotGUI extends JPanel {
 
         Mandelbrot.eachPoint(width, height, new Action3IntIntShort() {
                 public void apply(final int x, final int y, final short v) {
-                    image.setRGB(x, y, (byte)v);
+                    image.setRGB(x, y, (byte) v);
                     frame.repaint();
                 }
         });
