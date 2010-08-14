@@ -4,12 +4,12 @@ def width  = 80;
 def height = 20;
 
 function escapeTime(c: Complex) {
-    var escapeTimeRec: function (:Complex, :Complex, :Integer): Integer;
-    escapeTimeRec = function (c: Complex, z: Complex, s): Integer {
+    var escapeTimeRec: function (:Complex, :Integer): Integer;
+    escapeTimeRec = function (z: Complex, s): Integer {
         if (s > 256 or z.abs > 4) return s;
-        escapeTimeRec(c, z.mul(z).add(c), s + 1)
+        escapeTimeRec(z.mul(z).add(c), s + 1)
     }
-    escapeTimeRec(c, Complex {}, 0)
+    escapeTimeRec(Complex {}, 0)
 }
 
 package function eachPoint(width, height, func: function (:Integer, :Integer, :Integer)) {

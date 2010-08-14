@@ -3,11 +3,11 @@ import Data.Complex
 width = 80
 height = 20
 
-escapeTime c = escapeTime' c (0.0 :+ 0.0) 0
+escapeTime c = escapeTime' (0.0 :+ 0.0) 0
   where
-    escapeTime' c z step
+    escapeTime' z step
       | step > 254 || magnitude (abs z) > 4.0 = step
-      | otherwise                             = escapeTime' c (z*z + c) (step + 1)
+      | otherwise                             = escapeTime' (z*z + c) (step + 1)
 
 eachPoint width height f =
   mapM_ (\(x, y) -> f x y (escapeTime ((-2.0 + 3.0 / width * x) :+ (-1.0 + 2.0 / height * y)))) [(x, y) | y <- [0..height], x <- [0..width]]

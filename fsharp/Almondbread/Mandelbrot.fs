@@ -6,11 +6,11 @@ let width = 80
 let height = 20
 
 let escapeTime c = 
-    let rec escapeTime' = fun c z step -> 
+    let rec escapeTime' = fun z step -> 
         if step > 256 || Complex.Abs z > 4.0 
         then step 
-        else escapeTime' c (z*z + c) (step + 1)
-    escapeTime' c Complex.Zero 0
+        else escapeTime' (z*z + c) (step + 1)
+    escapeTime' Complex.Zero 0
 
 let eachPoint width height f = 
     let rs = 3.0 / (float width)
