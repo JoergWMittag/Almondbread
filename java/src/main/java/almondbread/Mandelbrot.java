@@ -16,14 +16,14 @@ final class Mandelbrot {
     }
 
     private static final short escapeTime(final Complex c) {
-        return escapeTimeRecursive(c, Complex.ZERO, (short) 0);
+        return escapeTime(c, Complex.ZERO, (short) 0);
     }
 
-    private static final short escapeTimeRecursive(final Complex c, final Complex z, final short step) {
+    private static final short escapeTime(final Complex c, final Complex z, final short step) {
         if (step > 256 || z.abs > 4) {
             return step;
         }
-        return escapeTimeRecursive(c, z.mul(z).add(c), (short) (step + 1));
+        return escapeTime(c, z.mul(z).add(c), (short) (step + 1));
     }
 
     static final void eachPoint(final int width, final int height, final Action3IntIntShort func) {
